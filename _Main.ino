@@ -15,10 +15,8 @@ void setup() {
 void loop() {
   if (mc == 0)
   {
-    //zona.calibrar();
-        Serial.println("Inicio");
-      do{zona.test();}while(true);
-        Serial.println("OK Final");
+    zona.calibrar();
+    do{zona.test();}while(true);
   }
 
   //Inicio de Zona A
