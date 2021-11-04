@@ -39,40 +39,13 @@ sensorUltrasonico sensorUS_D(trign, echo_D);
 //Sensores de Color
 sensorColor sensorC_I(s2n, s3n, out_I, 0);
 sensorColor sensorC_D(s2n, s3n, out_D, 1);
-////Sensor AcelerÃ³metro y Giroscopio
-//sensorAyG orientacionAyG;
 //NavegaciÃ³n del Robot
 navegacion navegar(in1n, in2n, in3n, in4n);
 //Para .accion : 0-> Apagar motores 1-> Giro a la izquierda. 2-> Giro a la derecha. 3-> Giro 180 4-> Avanzar
 //LedRGB
-//AquÃ­ llamaremos a la funiÃ³n para endender el led, usando el dato recibido de la funciÃ³n getColor, o de la Zona C
+//Aquí llamaremos a la funiÃ³n para endender el led, usando el dato recibido de la funciÃ³n getColor, o de la Zona C
 ledRGB led_rgb(led_Rn, led_Gn, led_Bn);
 
-
-//TEST
-//sensorC_I.valoresRGB(); sensorC_I.imprimeMatriz(); do {} while (true);     //Obtiene valores r g b para agregar a la matriz de getColor  (Usar 1 vez al inicio)
-//int colorActual = sensorC_I.getColor(); Serial.println(colorActual); // Obtiene el color actual del suelo
-//orientacionAyG.offsetsM();                                                    //Obtener offsets del sensor y luego remplazarlos
-//distancia= sensorUS_I.distancia(); for (int n = 0; n<10;n++){Serial.println(distancia);delay(1000);}
-
-//    navegar.accion(1);
-//    Serial.println("90 a la Izquierda");
-//    delay(2000);
-//
-//    navegar.accion(2);
-//    Serial.println("90 a la Derecha");
-//    delay(2000);
-
-
-//Test movimientos
-//    navegar.accion(1);
-//    Serial.println("okay");
-//    navegar.accion(2);
-//    Serial.println("okay2");
-//    navegar.accion(2);
-//    Serial.println("okay3");
-//    navegar.accion(3);
-//    Serial.println("okay4");
 
 //Constructor
 
@@ -94,22 +67,6 @@ void zonas::test() {
     Serial.println(sensorC_I.getColor());
     Serial.println(sensorC_D.getColor());
     Serial.println("OK3");
-
-
-  //  while (sensorUS_F.distancia() > 25) {
-  //    navegar.accion(4);
-  //    Serial.println(sensorUS_F.distancia());
-  //  }
-  //  navegar.accion(0);
-  
-//  while (true) {
-//    Serial.println(sensorUS_I.distancia());
-//    Serial.println(sensorUS_F.distancia());
-//    Serial.println(sensorUS_D.distancia());
-//    Serial.println("*-------------------------*");
-//    delay(200);
-//  }
-
 }
 
 void zonas::calibrar() {
@@ -145,7 +102,7 @@ void zonas::zonaA() {
       navegar.accion(0);
       navegar.accion(4);
     }
-    else {// Ninguna
+    else {                                               // Ninguna
       navegar.accion(2);
 
     }
@@ -237,9 +194,9 @@ void zonas::zonaC() {
 
 
 void zonas::rampa() {
-  navegar.accion(2); //Giro Izquierda
+  navegar.accion(2); //Giro Derecha
   while ((sensorUS_F.distancia() < ds)) {
-    navegar.accion(5); //Avanzar
+    navegar.accion(5); //Reversa
   }
 }
 
