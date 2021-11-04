@@ -16,7 +16,7 @@ void loop() {
   if (mc == 0)
   {
     zona.calibrar();
-    do{zona.test();}while(true);
+    do{}while(true);
   }
 
   //Inicio de Zona A
